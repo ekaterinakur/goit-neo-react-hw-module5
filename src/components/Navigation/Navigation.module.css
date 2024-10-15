@@ -1,0 +1,14 @@
+.navigation {
+	display: flex;
+	gap: 20px;
+}
+
+.link {
+  color: black;
+  text-decoration: none;
+}
+
+.activeLink {
+  color: rgb(75, 13, 93);
+  text-decoration: underline;
+}

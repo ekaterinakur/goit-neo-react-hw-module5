@@ -1,0 +1,18 @@
+.loader {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background-color: #0fa827;
+  box-shadow: 19px 0 0 7px #0fa827, 38px 0 0 3px #0fa827, 57px 0 0 0 #0fa827;
+  transform: translateX(-38px);
+  animation: loader-animation 0.5s infinite alternate linear;
+}
+
+@keyframes loader-animation {
+  50% {
+    box-shadow: 19px 0 0 3px #0fa827, 38px 0 0 7px #0fa827, 57px 0 0 3px #0fa827;
+  }
+  100% {
+    box-shadow: 19px 0 0 0 #0fa827, 38px 0 0 3px #0fa827, 57px 0 0 7px #0fa827;
+  }
+}

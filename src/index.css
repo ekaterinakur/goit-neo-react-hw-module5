@@ -1,0 +1,56 @@
+body {
+  font-family: sans-serif;
+  line-height: 1.5;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+}
+
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+  list-style: disc;
+}
+
+li {
+  list-style-type: disc;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+button {
+  background-color: transparent;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  border: 1px solid #272727;
+  border-radius: 4px;
+}
+
+button:hover {
+  background-color: #f6f6f6;
+}
+
+button:focus,
+button:focus-within {
+  outline: none;
+}
+
+input:focus {
+  outline: none;
+}
+
+h1 {
+  font-size: 1.5rem;
+  font-weight: normal;
+}
