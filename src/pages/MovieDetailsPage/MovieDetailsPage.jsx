@@ -1,18 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import {
   useParams,
   Link,
-  Route,
-  Routes,
   useLocation,
   useNavigate,
+  Outlet,
 } from 'react-router-dom';
 import { getMovieDetails } from '../../api/moviesAPI';
 import { getImageUrl } from '../../utils';
 import useLoading from '../../hooks/useLoading';
 import Loading from '../../components/Loading/Loading';
-import MovieCast from '../../components/MovieCast/MovieCast';
-import MovieReviews from '../../components/MovieReviews/MovieReviews';
 
 import styles from './MovieDetailsPage.module.css';
 
@@ -21,6 +18,7 @@ const MovieDetailsPage = () => {
   const navigate = useNavigate();
   const { movieId } = useParams();
   const { isLoading, isLoaded, startLoading, finishLoading } = useLoading();
+  const goBackUrl = useRef(location?.state?.from || '/movies');
 
   const [movie, setMovie] = useState(null);
 
@@ -40,11 +38,15 @@ const MovieDetailsPage = () => {
 
   if (isLoaded && !movie) return <p>No info.</p>;
 
+  const handleGoBack = () => {
+    navigate(goBackUrl.current);
+  };
+
   return (
     <div>
       <button
         className={styles.backButton}
-        onClick={() => navigate(location?.state?.from || '/movies')}
+        onClick={handleGoBack}
       >
         &#8592; Go back
       </button>
@@ -84,11 +86,8 @@ const MovieDetailsPage = () => {
       </nav>
 
       <hr />
-
-      <Routes>
-        <Route path="cast" element={<MovieCast />} />
-        <Route path="reviews" element={<MovieReviews />} />
-      </Routes>
+      
+      <Outlet />
     </div>
   );
 };

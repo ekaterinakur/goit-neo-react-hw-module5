@@ -1,12 +1,21 @@
 import React, { useState } from 'react';
+import { useNavigate, useSearchParams } from 'react-router-dom';
+
 import styles from './SearchBar.module.css';
 
-const SearchBar = ({ onSubmit }) => {
-  const [inputValue, setInputValue] = useState('');
+const SearchBar = () => {
+  const [searchParams] = useSearchParams();
+  const query = searchParams.get('query') || '';
+  const navigate = useNavigate();
 
-  const handleSubmit = e => {
+  const [inputValue, setInputValue] = useState(query);
+
+  const handleSubmit = (e) => {
     e.preventDefault();
-    onSubmit(inputValue);
+
+    if (inputValue) {
+      navigate(`?query=${encodeURIComponent(inputValue)}`);
+    }
   };
 
   return (
